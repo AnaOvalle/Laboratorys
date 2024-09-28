@@ -1,0 +1,42 @@
+<!-- myapp/templates/myapp/item_list.html -->
+<!--<h1>Items</h1>
+<a href="{% url 'item_create' %}">Crear nuevo</a>
+<ul>
+    {% for item in items %}
+    <li>
+        {{ item.name }} - 
+        <a href="{% url 'item_update' item.pk %}">Editar</a> | 
+        <a href="{% url 'item_delete' item.pk %}">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>   -->
+
+<!-- myapp/templates/myapp/item_list.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Items</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/styles.css' %}">
+</head>
+<body>
+    <h1>Items</h1>
+    <a href="{% url 'item_create' %}">
+        <button>Crear nuevo</button>
+    </a>
+    <ul>
+        {% for item in items %}
+        <li>
+            {{ item.name }} - 
+            <a href="{% url 'item_update' item.pk %}">Editar</a> | 
+            <a href="{% url 'item_delete' item.pk %}">Eliminar</a>
+        </li>
+        {% empty %}
+        <li>No hay elementos disponibles.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
